@@ -5,9 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Wang Zhe on 2015/7/29.
- */
 public class FileUtil {
 
     private static final String UTF_8 = "UTF-8";

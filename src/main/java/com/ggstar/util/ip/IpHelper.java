@@ -1,20 +1,18 @@
 package com.ggstar.util.ip;
 
-import com.ggstar.util.file.FileUtil;
 import com.ggstar.util.file.PoiUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Wang Zhe on 2015/8/11.
- */
 public class IpHelper {
 
     private static IpTree ipTree = IpTree.getInstance();
@@ -56,8 +54,9 @@ public class IpHelper {
 
         // <ipCode, province>
         Map<Integer, String> regionRelationMap = getRegionRelationMap();
-        String file =  IpHelper.class.getClassLoader().getResource(ipFile).getFile();
-        BufferedReader ipRelationReader = FileUtil.readFile(file);
+
+        InputStream inputStream = IpHelper.class.getResourceAsStream("/" + ipFile);
+        BufferedReader ipRelationReader = new BufferedReader(new InputStreamReader(inputStream));
 
         String line;
         List<IpRelation> list = new ArrayList<IpRelation>();
@@ -83,7 +82,7 @@ public class IpHelper {
      * @throws Exception
      */
     public static Map<Integer, String> getRegionRelationMap() throws Exception {
-        String file =  IpHelper.class.getClassLoader().getResource(regionFile).getFile();
+        InputStream file = IpHelper.class.getResourceAsStream("/" + regionFile);
 
         Workbook workbook = PoiUtil.getWorkbook(file);
 

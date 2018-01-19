@@ -3,9 +3,6 @@ package com.ggstar.testclient;
 import com.ggstar.util.ip.IpHelper;
 import org.junit.Test;
 
-/**
- * Created by Wang Zhe on 2015/8/11.
- */
 public class Client {
 
     @Test
